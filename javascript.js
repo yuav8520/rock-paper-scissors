@@ -55,9 +55,9 @@ if(human.toLowerCase()=="scissors"&&computer=="rock")
 
 }
 
-function game(gameScoreHuman,gameScoreComputer)//you made it werid so ill make it a first to 3
+function game(gameScoreHuman,gameScoreComputer)//new change now ft5
 {let human,computer;
-while(gameScoreHuman<3&&gameScoreComputer<3)
+while(gameScoreHuman<5&&gameScoreComputer<5)
 {human=prompt("rock paper or scissors");
 computer=getComputerChoice();
     console.log(singleGame(computer,human));
@@ -68,7 +68,7 @@ if(whoWon(human,computer)=="computer")
     console.log("the score is :"+gameScoreHuman+" to :"+gameScoreComputer);
 
 }
-if(gameScoreHuman==3)
+if(gameScoreHuman==5)
 console.log("you win");
 else(console.log("you lose"));
 }
