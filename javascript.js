@@ -58,19 +58,19 @@ if(human.toLowerCase()=="scissors"&&computer=="rock")
 function game(gameScoreHuman,gameScoreComputer)//new change now ft5
 {let human,computer;
 while(gameScoreHuman<5&&gameScoreComputer<5)
-{human=prompt("rock paper or scissors");
-computer=getComputerChoice();
+    {human=prompt("rock paper or scissors");
+    computer=getComputerChoice();
     console.log(singleGame(computer,human));
-if(whoWon(human,computer)=="human")
-{gameScoreHuman++;}
-if(whoWon(human,computer)=="computer")
-{gameScoreComputer++;}
+    if(whoWon(human,computer)=="human")
+        {gameScoreHuman++;}
+    if(whoWon(human,computer)=="computer")  
+        {gameScoreComputer++;}
     console.log("the score is :"+gameScoreHuman+" to :"+gameScoreComputer);
 
 }
 if(gameScoreHuman==5)
-console.log("you win");
-else(console.log("you lose"));
+    console.log("you win");
+    else    (console.log("you lose"));
 }
 
 //console.log(singleGame(getComputerChoice(),prompt("rock paper or scissors")))
