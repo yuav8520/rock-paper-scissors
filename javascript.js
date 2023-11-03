@@ -1,4 +1,4 @@
-function getComputerChoice()
+function getComputerChoice()//randomly chose r p or s
 {let randomNum=Math.floor(Math.random()*3);
     if(randomNum==0)
     {return "rock";   }
@@ -9,7 +9,7 @@ function getComputerChoice()
     }
     }
 }
-function singleGame(computer,human)
+function playRound(computer,human) //msg of who  won
 {
     if(human.toLowerCase()==computer)
     {return "draw you both pick :"+computer;
@@ -38,7 +38,7 @@ if(human.toLowerCase()=="scissors"&&computer=="rock")
 { 
     return "you lose scissors loses to rock";}
 }
-function whoWon(human,computer)
+function whoWon(human,computer)// says who won in string
 {    if(human.toLowerCase()=="rock"&&computer=="paper")
 return"computer";
  
@@ -55,24 +55,66 @@ if(human.toLowerCase()=="scissors"&&computer=="rock")
 
 }
 
-function game(gameScoreHuman,gameScoreComputer)//new change now ft5
-{let human,computer;
-while(gameScoreHuman<5&&gameScoreComputer<5)
-    {human=prompt("rock paper or scissors");
-    computer=getComputerChoice();
-    console.log(singleGame(computer,human));
-    if(whoWon(human,computer)=="human")
-        {gameScoreHuman++;}
+// function game(gameScoreHuman,gameScoreComputer)//plays ft 5 in console
+// {let human,computer;
+// while(gameScoreHuman<5&&gameScoreComputer<5)//plays
+//     {human=prompt("rock paper or scissors");
+//     computer=getComputerChoice();
+//     console.log(playRound(computer,human));
+//     if(whoWon(human,computer)=="human")
+//         {gameScoreHuman++;}
+//     if(whoWon(human,computer)=="computer")  
+//         {gameScoreComputer++;}
+//     console.log("the score is :"+gameScoreHuman+" to :"+gameScoreComputer);
+
+// }
+// if(gameScoreHuman==5) //who won
+//     console.log("you win");
+//     else    (console.log("you lose"));
+// }
+
+
+const rock=document.querySelector('#rock');
+const paper=document.querySelector('#paper');
+const scissors=document.querySelector('#scissors');
+const score=document.querySelector('#score');
+const results=document.querySelector('#results');
+const again=document.querySelector('#again')
+let gameScoreHuman=0,gameScoreComputer=0;
+score.textContent=gameScoreHuman + " "+gameScoreComputer;
+function scoreUpdate(human,computer)//adds a point to winner
+{    if(whoWon(human,computer)=="human")
+    {gameScoreHuman++;}
     if(whoWon(human,computer)=="computer")  
-        {gameScoreComputer++;}
-    console.log("the score is :"+gameScoreHuman+" to :"+gameScoreComputer);
+       {gameScoreComputer++;}
+       score.textContent=gameScoreHuman + " "+gameScoreComputer;
+       winner(gameScoreHuman,gameScoreComputer)
+}
+function winner(gameScoreHuman,gameScoreComputer)
+{if (gameScoreHuman==5)
+    {results.textContent="you win good job";
+again.textContent="want to show how good you are again"
+}
+    else {if(gameScoreComputer==5){
+    results.textContent="you lose";
+again.textContent="want a revange"}}
 
 }
-if(gameScoreHuman==5)
-    console.log("you win");
-    else    (console.log("you lose"));
-}
+rock.addEventListener('click', () => {
+    computer=getComputerChoice();
+    results.textContent=playRound(computer,'rock');
+   scoreUpdate('rock',computer);
+});
+paper.addEventListener('click', () => {
+    computer=getComputerChoice();
+    results.textContent=playRound(computer,'paper');
+    scoreUpdate('paper',computer);
+});
+scissors.addEventListener('click', () => {
+    computer=getComputerChoice();
+    results.textContent=playRound(computer,'scissors');
+    scoreUpdate('scissors',computer);
+});
 
-//console.log(singleGame(getComputerChoice(),prompt("rock paper or scissors")))
-game(0,0);
+
 
